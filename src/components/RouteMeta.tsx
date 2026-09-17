@@ -9,6 +9,26 @@ const RouteMeta = () => {
   const ogImage = absoluteUrl(seo.ogImagePath);
   const isKnownRoute = SITE_PAGES_SEO.some((p) => p.path === pathname);
 
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "IT GxP Solutions & Consulting LLP",
+    "url": "https://gxpitsolutions.com",
+    "logo": "https://gxpitsolutions.com/og-logo.png",
+    "image": "https://gxpitsolutions.com/og-home.jpg",
+    "description": "Pharma GxP IT training, Computer System Validation (CSV), QMS, and compliance consulting programs.",
+    "telephone": "+91 96766 58686",
+    "email": "info@gxpitsolutions.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "IN",
+      "addressLocality": "India"
+    },
+    "sameAs": [
+      "https://wa.me/919676658686"
+    ]
+  };
+
   return (
     <Helmet prioritizeSeoTags>
       <html lang="en" />
@@ -35,6 +55,10 @@ const RouteMeta = () => {
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:description" content={seo.metaDescription} />
       <meta name="twitter:image" content={ogImage} />
+
+      <script type="application/ld+json">
+        {JSON.stringify(organizationSchema)}
+      </script>
     </Helmet>
   );
 };
