@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 13%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 13%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 13%;
+
+    --primary: 350 100% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 20% 96%;
+    --secondary-foreground: 0 0% 13%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 350 100% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 350 100% 45%;
+
+    --radius: 0.5rem;
+
+    /* Custom tokens */
+    --red: 350 100% 45%;
+    --red-hover: 350 100% 38%;
+    --red-light: 350 100% 96%;
+    --dark: 0 0% 13%;
+    --dark-bg: 0 0% 10%;
+    --gray-light: 220 20% 97%;
+    --gray-medium: 220 9% 46%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold;
+  }
+}
+
+@layer components {
+  /* Woxsen-style red left border heading */
+  .wox-heading {
+    @apply relative pl-5 font-heading text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-tight;
+  }
+  .wox-heading::before {
+    content: '';
+    @apply absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-full;
+  }
+
+  .wox-heading-white {
+    @apply relative pl-5 font-heading text-2xl md:text-3xl lg:text-4xl font-bold text-primary-foreground leading-tight;
+  }
+  .wox-heading-white::before {
+    content: '';
+    @apply absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-full;
+  }
+
+  .wox-subheading {
+    @apply text-sm uppercase tracking-[0.2em] font-bold text-primary mb-2;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground font-bold rounded-sm hover:bg-red-hover transition-all text-sm tracking-wide;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-8 py-3 border-2 border-primary text-primary font-bold rounded-sm hover:bg-primary hover:text-primary-foreground transition-all text-sm tracking-wide;
+  }
+
+  .btn-white {
+    @apply inline-flex items-center justify-center px-8 py-3 bg-white text-foreground font-bold rounded-sm hover:bg-gray-100 transition-all text-sm tracking-wide;
+  }
+
+  .wp-section {
+    @apply py-10 md:py-16 lg:py-24 px-4 md:px-8;
+  }
+
+  .wp-container {
+    @apply w-full mx-auto max-w-7xl;
+  }
+
+  .wp-card {
+    @apply bg-card rounded-sm border border-border overflow-hidden transition-all hover:shadow-lg;
+  }
+
+  .wp-bullet {
+    @apply flex items-start gap-3 text-foreground;
+  }
+
+  .wp-bullet-icon {
+    @apply w-5 h-5 text-primary flex-shrink-0 mt-0.5;
+  }
+
+  /* Floating side buttons (Woxsen-style) */
+  .side-actions {
+    @apply fixed right-0 top-1/2 -translate-y-1/2 z-50 flex flex-col;
+  }
+  .side-action-btn {
+    @apply flex flex-col items-center justify-center w-16 h-16 text-white text-[10px] font-bold uppercase tracking-wider transition-all hover:w-20;
+  }
+}
+
+@layer utilities {
+  .hero-gradient {
+    background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.2) 100%);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--secondary));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 4px;
+}
